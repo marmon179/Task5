@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test 4</title>
+    <script src="Sender.js"></script>
+</head>
+<body>
+<p>domain.one</p>
+<iframe name='iframe' id='ifr' src='domain.two.html'></iframe>
+
+
+
+<script>
+    'use strict';
+    let iframe = document.getElementById('ifr').contentWindow,
+        sender = new Sender(iframe)
+
+
+    window.onload = () => {
+        sender.addData({'hello' : 'test '});
+        sender.addData({'test' : 'test '});
+        sender.readData('hello');
+        sender.readData('test');
+        sender.deleteData('test');
+        sender.readData('test');
+
+    }
+
+</script>
+</body>
+</html>
